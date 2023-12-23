@@ -9,8 +9,8 @@
                             <img src="{{p.imageUrl}}" class="img-responsive">
                         </a>
                         
-                        <a routerLink="/products/{{p.id}}">
-                            <h2>{{p.name}}</h2>
+                        <a routerLink="/products/{{p.id}}" style="text-decoration:none;color:rgb(49, 47, 47)">
+                            <h1>{{p.name}}</h1>
                         </a>
                         
                         <div class="price">{{p.unitPrice | currency: 'USD'}}</div>
