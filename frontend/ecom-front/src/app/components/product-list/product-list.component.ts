@@ -121,4 +121,10 @@ export class ProductListComponent {
         }
       );   
   }
+
+  updatePageSize(pageSize: string) {
+    this.thePageSize = +pageSize;
+    this.thePageNumber = 1;
+    this.listProducts();
+  }
 }
