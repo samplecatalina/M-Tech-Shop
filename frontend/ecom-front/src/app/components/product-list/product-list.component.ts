@@ -108,6 +108,10 @@ export class ProductListComponent {
     this.listProducts();
   }
 
+  addToCart(theProduct: Product) {
+    console.log(`Adding to cart: ${theProduct.name}, ${theProduct.unitPrice}`);
+  }
+
   processResult() {
     return (data: any) => {
       this.products = data._embedded.products;
