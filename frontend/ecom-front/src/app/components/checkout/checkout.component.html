@@ -1,0 +1,49 @@
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+                <!-- customer form group -->
+                <div formGroupName="customer" class="form-area">
+                    
+                    <h3 class="title">Customer</h3>
+                    
+                    <div class="row">
+                        <div class="col-md-2"><label>First Name</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="firstName" placeholder="First Name">
+                                <!-- <span class="error" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">First Name is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Last Name</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="lastName" placeholder="Last Name">
+                                <!-- <span class="error" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">Last Name is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Email</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="email" placeholder="Email">
+                                <!-- <span class="error" *ngIf="email.invalid && (email.dirty || email.touched)">Email is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end customer form group -->
+                <!-- submit button-->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
