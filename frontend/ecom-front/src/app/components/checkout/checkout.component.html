@@ -4,9 +4,9 @@
             <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
                 <!-- customer form group -->
                 <div formGroupName="customer" class="form-area">
-                    
+
                     <h3 class="title">Customer</h3>
-                    
+
                     <div class="row">
                         <div class="col-md-2"><label>First Name</label></div>
                         <div class="col-md-9">
@@ -39,11 +39,140 @@
 
                 </div>
                 <!-- end customer form group -->
-                <!-- submit button-->
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+
+                <!-- shipping address form group -->
+                <div formGroupName="shippingAddress" class="form-area">
+
+                    <h3 class="title">Shipping Address</h3>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Street</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="street" placeholder="Street">
+                                <!-- <span class="error" *ngIf="street.invalid && (street.dirty || street.touched)">Street is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>City</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="city" placeholder="City">
+                                <!-- <span class="error" *ngIf="city.invalid && (city.dirty || city.touched)">City is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>State</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="state" placeholder="State">
+                                <!-- <span class="error" *ngIf="state.invalid && (state.dirty || state.touched)">State is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Zip Code</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="Zip Code" placeholder="Zip Code">
+                                <!-- <span class="error" *ngIf="city.invalid && (city.dirty || city.touched)">City is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Country</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="country">
+                                    <option value="">-- Select Country --</option>
+                                    <!-- <option *ngFor="let country of countries" [value]="country.name">{{country.name}}</option> -->
+                                </select>
+                                <!-- <input type="text" formControlName="country" placeholder="Country"> -->
+                                <!-- <span class="error" *ngIf="country.invalid && (country.dirty || country.touched)">Country is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <!-- end shipping address form group -->
+
+                <!-- Add checkbox to copy shipping address to billing address -->
+                <div class="input-space">
+                    <input type="checkbox" formControlName="copyShippingAddress" (change)="copyShippingAddressToBillingAddress($event)">
+                    <label>Copy Shipping Address to Billing Address</label>
+                </div>
+
+                <!-- billing address form group -->
+                <div formGroupName="billingAddress" class="form-area">
+
+                    <h3 class="title">Billing Address</h3>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Street</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="street" placeholder="Street">
+                                <!-- <span class="error" *ngIf="street.invalid && (street.dirty || street.touched)">Street is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>City</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="city" placeholder="City">
+                                <!-- <span class="error" *ngIf="city.invalid && (city.dirty || city.touched)">City is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>State</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="state" placeholder="State">
+                                <!-- <span class="error" *ngIf="state.invalid && (state.dirty || state.touched)">State is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Zip Code</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="Zip Code" placeholder="Zip Code">
+                                <!-- <span class="error" *ngIf="city.invalid && (city.dirty || city.touched)">City is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Country</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="country">
+                                    <option value="">-- Select Country --</option>
+                                    <!-- <option *ngFor="let country of countries" [value]="country.name">{{country.name}}</option> -->
+                                </select>
+                                <!-- <input type="text" formControlName="country" placeholder="Country"> -->
+                                <!-- <span class="error" *ngIf="country.invalid && (country.dirty || country.touched)">Country is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end billing address form group -->
             </form>
+            <!-- submit button-->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+            </div>
+
         </div>
     </div>
 </div>

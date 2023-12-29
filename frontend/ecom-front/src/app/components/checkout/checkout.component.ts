@@ -18,8 +18,52 @@ export class CheckoutComponent {
         firstName: [''],
         lastName: [''],
         email: ['']
+      }),
+
+      shippingAddress: this.formBuilder.group({
+        street: [''],
+        city: [''],
+        state: [''],
+        country: [''],
+        zipCode: ['']
+      }),
+
+      billingAddress: this.formBuilder.group({
+        street: [''],
+        city: [''],
+        state: [''],
+        country: [''],
+        zipCode: ['']
+      }),
+
+      creditCard: this.formBuilder.group({
+        cardType: [''],
+        nameOnCard: [''],
+        cardNumber: [''],
+        securityCode: [''],
+        expirationMonth: [''],
+        expirationYear: ['']
       })
     });
+  }
+
+  copyShippingAddressToBillingAddress(event: { target: { checked: any; }; }) {
+ 
+    if (event.target.checked) {
+      this.checkoutFormGroup.controls['billingAddress']
+            .setValue(this.checkoutFormGroup.controls['shippingAddress'].value);
+ 
+      // bug fix for states
+      // this.billingAddressStates = this.shippingAddressStates;
+ 
+    }
+    else {
+      this.checkoutFormGroup.controls['billingAddress'].reset();
+ 
+      // bug fix for states
+      // this.billingAddressStates = [];
+    }
+    
   }
 
   onSubmit() {
