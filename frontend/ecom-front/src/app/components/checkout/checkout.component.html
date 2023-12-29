@@ -167,7 +167,115 @@
                     </div>
                 </div>
                 <!-- end billing address form group -->
+
+                <!-- credit card form group -->
+                <div formGroupName="creditCard" class="form-area">
+
+                    <h3 class="title">Credit Card</h3>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Name on Card</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="nameOnCard" placeholder="Name on Card">
+                                <!-- <span class="error" *ngIf="nameOnCard.invalid && (nameOnCard.dirty || nameOnCard.touched)">Name on Card is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Card Number</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="cardNumber" placeholder="Card Number">
+                                <!-- <span class="error" *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)">Card Number is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Card Type</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="cardType" placeholder="Card Type">
+                                    <option>Visa</option>
+                                    <option>MasterCard</option>
+                                </select>
+                                <!-- <span class="error" *ngIf="nameOnCard.invalid && (nameOnCard.dirty || nameOnCard.touched)">Name on Card is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Security Code</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input type="text" formControlName="securityCode" placeholder="Security Code">
+                                <!-- <span class="error" *ngIf="securityCode.invalid && (securityCode.dirty || securityCode.touched)">Security Code is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Expiration Year</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="expirationYear" (change)="handleMonthAndYears()">
+                                    <option value="">-- Select Year --</option>
+                                    <option *ngFor="let year of creditCardYears" [value]="year">{{year}}</option>
+                                </select>
+                                <!-- <span class="error" *ngIf="expirationYear.invalid && (expirationYear.dirty || expirationYear.touched)">Expiration Year is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>Expiration Month</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="expirationMonth">
+                                    <option value="">-- Select Month --</option>
+                                    <option *ngFor="let month of creditCardMonths" [value]="month">{{month}}</option>
+                                </select>
+                                <!-- <span class="error" *ngIf="expirationMonth.invalid && (expirationMonth.dirty || expirationMonth.touched)">Expiration Month is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </form>
+            
+            <!-- order review -->
+            <!-- <div class="order-review">
+                <h3 class="title">Order Review</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of cartItems">
+                                <td>{{item.name}}</td>
+                                <td>{{item.qty}}</td>
+                                <td>{{item.price | currency:'USD':true}}</td>
+                                <td>{{item.qty * item.price | currency:'USD':true}}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3">Total</td>
+                                <td>{{cartTotal | currency:'USD':true}}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div> -->
+
             <!-- submit button-->
             <div class="text-center">
                 <button type="submit" class="btn btn-primary btn-sm">Submit</button>
