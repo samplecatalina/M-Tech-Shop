@@ -46,11 +46,28 @@
                     <h3 class="title">Shipping Address</h3>
 
                     <div class="row">
-                        <div class="col-md-2"><label>Street</label></div>
+                        <div class="col-md-2"><label>Country</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input type="text" formControlName="street" placeholder="Street">
-                                <!-- <span class="error" *ngIf="street.invalid && (street.dirty || street.touched)">Street is required.</span> -->
+                                <select formControlName="country" (change)="getStates('shippingAddress')">
+                                    <option value="">-- Select Country --</option>
+                                    <option *ngFor="let country of countries" [ngValue]="country">{{country.name}}</option>
+                                </select>
+                                <!-- <input type="text" formControlName="country" placeholder="Country"> -->
+                                <!-- <span class="error" *ngIf="country.invalid && (country.dirty || country.touched)">Country is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>State</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="state">
+                                    <option value="">-- Select State --</option>
+                                    <option *ngFor="let state of shippingAddressStates" [ngValue]="state">{{state.name}}</option>
+                                </select>
+                                <!-- <span class="error" *ngIf="state.invalid && (state.dirty || state.touched)">State is required.</span> -->
                             </div>
                         </div>
                     </div>
@@ -66,11 +83,11 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-2"><label>State</label></div>
+                        <div class="col-md-2"><label>Street</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input type="text" formControlName="state" placeholder="State">
-                                <!-- <span class="error" *ngIf="state.invalid && (state.dirty || state.touched)">State is required.</span> -->
+                                <input type="text" formControlName="street" placeholder="Street">
+                                <!-- <span class="error" *ngIf="street.invalid && (street.dirty || street.touched)">Street is required.</span> -->
                             </div>
                         </div>
                     </div>
@@ -79,31 +96,18 @@
                         <div class="col-md-2"><label>Zip Code</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input type="text" formControlName="Zip Code" placeholder="Zip Code">
+                                <input type="text" formControlName="zipCode" placeholder="Zip Code">
                                 <!-- <span class="error" *ngIf="city.invalid && (city.dirty || city.touched)">City is required.</span> -->
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-2"><label>Country</label></div>
-                        <div class="col-md-9">
-                            <div class="input-space">
-                                <select formControlName="country">
-                                    <option value="">-- Select Country --</option>
-                                    <option *ngFor="let country of countries" [ngValue]="country">{{country.name}}</option>
-                                </select>
-                                <!-- <input type="text" formControlName="country" placeholder="Country"> -->
-                                <!-- <span class="error" *ngIf="country.invalid && (country.dirty || country.touched)">Country is required.</span> -->
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- end shipping address form group -->
 
                 <!-- Add checkbox to copy shipping address to billing address -->
                 <div class="input-space">
-                    <input type="checkbox" formControlName="copyShippingAddress" (change)="copyShippingAddressToBillingAddress($event)">
+                    <input type="checkbox" (change)="copyShippingAddressToBillingAddress($event)">
                     <label>Copy Shipping Address to Billing Address</label>
                 </div>
 
@@ -113,11 +117,28 @@
                     <h3 class="title">Billing Address</h3>
 
                     <div class="row">
-                        <div class="col-md-2"><label>Street</label></div>
+                        <div class="col-md-2"><label>Country</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input type="text" formControlName="street" placeholder="Street">
-                                <!-- <span class="error" *ngIf="street.invalid && (street.dirty || street.touched)">Street is required.</span> -->
+                                <select formControlName="country" (change)="getStates('billingAddress')">
+                                    <option value="">-- Select Country --</option>
+                                    <option *ngFor="let country of countries" [ngValue]="country">{{country.name}}</option>
+                                </select>
+                                <!-- <input type="text" formControlName="country" placeholder="Country"> -->
+                                <!-- <span class="error" *ngIf="country.invalid && (country.dirty || country.touched)">Country is required.</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><label>State</label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="state" placeholder="State">
+                                    <option value="">-- Select State --</option>
+                                    <option *ngFor="let state of billingAddressStates" [ngValue]="state">{{state.name}}</option>
+                                </select>
+                                <!-- <span class="error" *ngIf="state.invalid && (state.dirty || state.touched)">State is required.</span> -->
                             </div>
                         </div>
                     </div>
@@ -133,11 +154,11 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-2"><label>State</label></div>
+                        <div class="col-md-2"><label>Street</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input type="text" formControlName="state" placeholder="State">
-                                <!-- <span class="error" *ngIf="state.invalid && (state.dirty || state.touched)">State is required.</span> -->
+                                <input type="text" formControlName="street" placeholder="Street">
+                                <!-- <span class="error" *ngIf="street.invalid && (street.dirty || street.touched)">Street is required.</span> -->
                             </div>
                         </div>
                     </div>
@@ -146,25 +167,13 @@
                         <div class="col-md-2"><label>Zip Code</label></div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <input type="text" formControlName="Zip Code" placeholder="Zip Code">
+                                <input type="text" formControlName="zipCode" placeholder="Zip Code">
                                 <!-- <span class="error" *ngIf="city.invalid && (city.dirty || city.touched)">City is required.</span> -->
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-2"><label>Country</label></div>
-                        <div class="col-md-9">
-                            <div class="input-space">
-                                <select formControlName="country">
-                                    <option value="">-- Select Country --</option>
-                                    <option *ngFor="let country of countries" [ngValue]="country">{{country.name}}</option>
-                                </select>
-                                <!-- <input type="text" formControlName="country" placeholder="Country"> -->
-                                <!-- <span class="error" *ngIf="country.invalid && (country.dirty || country.touched)">Country is required.</span> -->
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                 <!-- end billing address form group -->
 

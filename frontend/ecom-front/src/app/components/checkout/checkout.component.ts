@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CheckoutFormService } from '../../services/checkout-form.service';
 import { Country } from '../../common/country';
+import { State } from '../../common/state';
 
 @Component({
   selector: 'app-checkout',
@@ -20,6 +21,8 @@ export class CheckoutComponent {
 
   countries: Country[] = [];
 
+  shippingAddressStates: State[] = [];
+  billingAddressStates: State[] = [];
 
   constructor(private formBuilder: FormBuilder,
     private checkoutFormService: CheckoutFormService) { }
@@ -92,18 +95,14 @@ export class CheckoutComponent {
     if (event.target.checked) {
       this.checkoutFormGroup.controls['billingAddress']
         .setValue(this.checkoutFormGroup.controls['shippingAddress'].value);
-
       // bug fix for states
-      // this.billingAddressStates = this.shippingAddressStates;
-
+      this.billingAddressStates = this.shippingAddressStates;
     }
     else {
       this.checkoutFormGroup.controls['billingAddress'].reset();
-
       // bug fix for states
-      // this.billingAddressStates = [];
+      this.billingAddressStates = [];
     }
-
   }
 
   onSubmit() {
@@ -138,4 +137,25 @@ export class CheckoutComponent {
     );
 
   }
+
+  getStates(formGroupName: string) {
+      
+      const formGroup = this.checkoutFormGroup.get(formGroupName);
+  
+      const countryCode = formGroup?.value.country.code;
+  
+      this.checkoutFormService.getStates(countryCode).subscribe(
+        data => {
+          if (formGroupName === 'shippingAddress') {
+            this.shippingAddressStates = data;
+          }
+          else {
+            this.billingAddressStates = data;
+          }
+  
+          // select first item by default
+          formGroup?.get('state')?.setValue(data[0]);
+        }
+      );
+    }
 }
