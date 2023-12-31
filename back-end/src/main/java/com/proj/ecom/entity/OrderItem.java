@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 public class OrderItem {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
