@@ -108,6 +108,9 @@ export class CheckoutComponent {
   onSubmit() {
     console.log("Handling the submit button");
     console.log(this.checkoutFormGroup.get('customer')?.value);
+    console.log("The email address is " + this.checkoutFormGroup.get('customer')?.value.email);
+    console.log("The shipping address country is " + this.checkoutFormGroup.get('shippingAddress')?.value.country.name);
+    console.log("The shipping address state is " + this.checkoutFormGroup.get('shippingAddress')?.value.state.name);
   }
 
 
@@ -143,6 +146,10 @@ export class CheckoutComponent {
       const formGroup = this.checkoutFormGroup.get(formGroupName);
   
       const countryCode = formGroup?.value.country.code;
+      const countryName = formGroup?.value.country.name;
+
+      console.log(`${formGroupName} country code: ${countryCode}`);
+      console.log(`${formGroupName} country name: ${countryName}`);
   
       this.checkoutFormService.getStates(countryCode).subscribe(
         data => {
