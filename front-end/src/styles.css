@@ -282,9 +282,11 @@ input.au-input.au-input-xl{
 .au-btn-submit{
     position:relative;
     right:0;
-    min-width:95px;
+    min-width:80px;
+    max-height: min-content;
+    margin-right: 10px;
     color:#00274C;
-    border:1px solid #FFCB05;
+    border:0px solid #FFCB05;
     -webkit-border-radius:3px;
     -moz-border-radius:3px;
     border-radius:43px;
@@ -293,7 +295,7 @@ input.au-input.au-input-xl{
 }
 
 .au-btn-submit:hover{
-    background:#05143f
+    background:#CFC096
 }
 
 .au-btn-submit>i{

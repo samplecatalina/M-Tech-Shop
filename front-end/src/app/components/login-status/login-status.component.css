@@ -6,14 +6,23 @@
 .security-btn {
     position:relative;
     right:0;
-    min-width:95px;
-    color:#fff;
-    border:10px solid #205b8d;
+    margin-right: 10px;
+    max-width:95px;
+    min-width: 90px;
+    max-height: 43px;
+    min-height: 43px;
+    color:#00274C;
+    border:0px solid #205b8d;
     -webkit-border-radius:3px;
     -moz-border-radius:3px;
     border-radius:43px;
-    background:#205b8d
+    background:#FFCB05
 }
+
+.security-btn input:last-child{
+    margin-right:0px;
+    /*so the last one dont push the div thas giving the space only between the inputs*/
+    }
 
 /*
     Copy from styles.css -> .form-header
