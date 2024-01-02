@@ -4,14 +4,15 @@ import { get } from 'http';
 import { Observable, map, of } from 'rxjs';
 import { Country } from '../common/country';
 import { State } from '../common/state';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CheckoutFormService {
 
-  private countriesUrl = 'http://localhost:8080/api/countries';
-  private statesUrl = 'http://localhost:8080/api/states';
+  private countriesUrl = environment['mtechshopApiUrl']+'/countries';
+  private statesUrl = environment['mtechshopApiUrl']+'/states';
 
   constructor(private httpClient: HttpClient) { }
 
