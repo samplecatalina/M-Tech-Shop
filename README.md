@@ -1,5 +1,5 @@
 # MTechShop: Full-Stack Angular E-Commerce Application
-
+## Digest
 - Built a full-stack E-commerce application with Angular front-end and Spring Boot back-end.
 
 - Developed responsive front-end using Angular with HTML/CSS/TypeScript, leveraging scalable Angular
