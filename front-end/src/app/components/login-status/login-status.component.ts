@@ -3,9 +3,10 @@ import { OktaAuthStateService, OKTA_AUTH } from '@okta/okta-angular';
 import { OktaAuth } from '@okta/okta-auth-js';
 
 @Component({
-  selector: 'app-login-status',
-  templateUrl: './login-status.component.html',
-  styleUrls: ['./login-status.component.css']
+    selector: 'app-login-status',
+    templateUrl: './login-status.component.html',
+    styleUrls: ['./login-status.component.css'],
+    standalone: false
 })
 export class LoginStatusComponent implements OnInit {
 
@@ -35,7 +36,7 @@ export class LoginStatusComponent implements OnInit {
       //
       // user full name is exposed as a property name
       this.oktaAuth.getUser().then(
-        (res) => {
+        (res: any) => {
           this.userFullName = res.name as string;
 
           // retrieve the user's email from authentication response

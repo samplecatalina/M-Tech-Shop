@@ -1,61 +1,62 @@
 <div class="main-content">
-    <div class="section-content section-content-p30">
-        <div class="container-fluid">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <div class="row">
+        @for (p of products; track p) {
+          <div class="col-md-3">
+            <div class="product-box">
+              <a routerLink="/products/{{p.id}}">
+                <img src="{{p.imageUrl}}" class="img-responsive">
+              </a>
+              <a routerLink="/products/{{p.id}}" style="text-decoration:none;color:rgb(49, 47, 47)">
+                <h1>{{p.name}}</h1>
+              </a>
+              <div class="price">{{p.unitPrice | currency: 'USD'}}</div>
+              <button (click)="addToCart(p)" class="btn btn-primary btn-sm">Add to Cart</button>
+            </div>
+          </div>
+        }
+
+        @if (products?.length == 0) {
+          <div class="alert alert-warning col-md-12" role="alert">
+            Sorry, no products found.
+          </div>
+        }
+      </div>
+
+      <!--begin footer-->
+      <div class="footer-pagination">
+        <div class="row">
+          <div class="col-md-6"></div>
+          <div class="col-md-6">
             <div class="row">
-                <div *ngFor="let p of products" class="col-md-3">
-                    <div class="product-box">
+              <div class="col-md-9" style="padding-left: 30%">
 
-                        <a routerLink="/products/{{p.id}}">
-                            <img src="{{p.imageUrl}}" class="img-responsive">
-                        </a>
-                        
-                        <a routerLink="/products/{{p.id}}" style="text-decoration:none;color:rgb(49, 47, 47)">
-                            <h1>{{p.name}}</h1>
-                        </a>
-                        
-                        <div class="price">{{p.unitPrice | currency: 'USD'}}</div>
-                        <button (click)="addToCart(p)" class="btn btn-primary btn-sm">Add to Cart</button>
-                    </div>
+                <ngb-pagination [(page)]="thePageNumber"
+                  [pageSize]="thePageSize"
+                  [collectionSize]="theTotalElements"
+                  [boundaryLinks]="true"
+                  [maxSize]="5"
+                  (pageChange)="listProducts()">
+                </ngb-pagination>
+
+
+                <div>
+                  <span>Page Size </span>
+                  <select #myPageSelect (change)="updatePageSize(myPageSelect.value)">
+                    <option>5</option>
+                    <option selected="true">10</option>
+                    <option>20</option>
+                    <option>50</option>
+                  </select>
                 </div>
 
-                <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
-                        Sorry, no products found.
-                </div>
+              </div>
             </div>
-
-            <!--begin footer-->
-            <div class="footer-pagination">
-                <div class="row">
-                    <div class="col-md-6"></div>
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-9" style="padding-left: 30%">
-
-                                <ngb-pagination [(page)]="thePageNumber" 
-                                    [pageSize]="thePageSize"
-                                    [collectionSize]="theTotalElements"
-                                    [boundaryLinks]="true" 
-                                    [maxSize]="5"
-                                    (pageChange)="listProducts()">
-                                </ngb-pagination>
-
-                                
-                                <div>
-                                    <span>Page Size </span>
-                                    <select #myPageSelect (change)="updatePageSize(myPageSelect.value)">
-                                        <option>5</option>
-                                        <option selected="true">10</option>
-                                        <option>20</option>
-                                        <option>50</option>
-                                    </select>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--end footer-->
+          </div>
         </div>
+      </div>
+      <!--end footer-->
     </div>
+  </div>
 </div>
