@@ -45,7 +45,22 @@
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
+    "karma-jasmine-html-reporter": "~2.2.0",
     "typescript": "~5.9.3"
+  },
+  "overrides": {
+    "lodash": "^4.17.21",
+    "follow-redirects": "^1.15.9",
+    "picomatch": "^4.0.2",
+    "minimatch": "^9.0.5",
+    "ws": "^8.18.0",
+    "@babel/runtime": "^7.26.10",
+    "@babel/runtime-corejs3": "^7.26.10",
+    "js-cookie": "^3.0.5",
+    "uuid": "^11.0.0",
+    "flatted": "^3.3.2",
+    "tmp": "^0.2.4",
+    "cookie": "^0.7.0",
+    "webpack-dev-server": "^5.2.1"
   }
 }
