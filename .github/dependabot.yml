@@ -1,0 +1,60 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /front-end
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    groups:
+      angular:
+        patterns:
+          - "@angular/*"
+          - "@angular-devkit/*"
+          - "@schematics/*"
+          - "zone.js"
+      okta:
+        patterns:
+          - "@okta/*"
+      stripe:
+        patterns:
+          - "stripe"
+          - "@stripe/*"
+      build-tooling:
+        patterns:
+          - "typescript"
+          - "karma*"
+          - "jasmine*"
+          - "@types/*"
+      other-prod:
+        dependency-type: production
+        exclude-patterns:
+          - "@angular/*"
+          - "@angular-devkit/*"
+          - "@schematics/*"
+          - "@okta/*"
+          - "stripe"
+          - "@stripe/*"
+          - "zone.js"
+      other-dev:
+        dependency-type: development
+        exclude-patterns:
+          - "@angular/*"
+          - "@angular-devkit/*"
+          - "@schematics/*"
+          - "typescript"
+          - "karma*"
+          - "jasmine*"
+          - "@types/*"
+
+  - package-ecosystem: maven
+    directory: /back-end
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      spring:
+        patterns:
+          - "org.springframework*:*"
+      okta:
+        patterns:
+          - "com.okta.*:*"
