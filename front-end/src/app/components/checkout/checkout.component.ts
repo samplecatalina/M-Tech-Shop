@@ -15,9 +15,10 @@ import { PaymentInfo } from '../../common/payment-info';
 import { BlobOptions } from 'node:buffer';
 
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrl: './checkout.component.css'
+    selector: 'app-checkout',
+    templateUrl: './checkout.component.html',
+    styleUrl: './checkout.component.css',
+    standalone: false
 })
 export class CheckoutComponent {
 
