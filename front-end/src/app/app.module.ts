@@ -4,7 +4,7 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 import { Routes, RouterModule, Router } from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
@@ -69,36 +69,30 @@ const routes: Routes = [
   {path: '**', redirectTo: '/products', pathMatch: 'full'}
 ];
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    ProductListComponent,
-    ProductCategoryMenuComponent,
-    SearchComponent,
-    ProductDetailsComponent,
-    CartStatusComponent,
-    CartDetailsComponent,
-    CheckoutComponent,
-    LoginComponent,
-    LoginStatusComponent,
-    MembersPageComponent,
-    OrderHistoryComponent
-  ],
-  imports: [
-    RouterModule.forRoot(routes),
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    NgbModule,
-    ReactiveFormsModule,
-    OktaAuthModule
-  ],
-  providers: [
-    provideClientHydration(),
-    ProductService,
-    { provide: OKTA_CONFIG, useValue: { oktaAuth }},
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        ProductListComponent,
+        ProductCategoryMenuComponent,
+        SearchComponent,
+        ProductDetailsComponent,
+        CartStatusComponent,
+        CartDetailsComponent,
+        CheckoutComponent,
+        LoginComponent,
+        LoginStatusComponent,
+        MembersPageComponent,
+        OrderHistoryComponent
+    ],
+    bootstrap: [AppComponent], imports: [RouterModule.forRoot(routes),
+        BrowserModule,
+        AppRoutingModule,
+        NgbModule,
+        ReactiveFormsModule,
+        OktaAuthModule], providers: [
+        provideClientHydration(),
+        ProductService,
+        { provide: OKTA_CONFIG, useValue: { oktaAuth } },
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }
