@@ -12,7 +12,6 @@ import { CheckoutService } from '../../services/checkout.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { PaymentInfo } from '../../common/payment-info';
-import { BlobOptions } from 'node:buffer';
 
 @Component({
     selector: 'app-checkout',
