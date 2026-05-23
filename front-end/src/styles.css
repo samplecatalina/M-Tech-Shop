@@ -283,7 +283,8 @@ input.au-input.au-input-xl{
     position:relative;
     right:0;
     min-width:80px;
-    max-height: min-content;
+    min-height: 45px;
+    max-height: 45px;
     margin-right: 10px;
     color:#00274C;
     border:0px solid #FFCB05;
